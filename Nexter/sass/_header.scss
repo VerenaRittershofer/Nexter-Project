@@ -1,0 +1,70 @@
+.header {
+    background-image: linear-gradient(rgba($color-secondary, .93), rgba($color-secondary, .93)), url(/img/hero.jpeg);
+    background-size: cover;
+    background-position: center;
+    grid-column: full-start / col-end 6; 
+    padding: 8rem; 
+    padding-top: 4rem; 
+
+    display: grid; 
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    grid-template-columns: minmax(min-content max-content); 
+    //with (..max-content) we make sure that the column only takes as much space as it need and therefore we can center the logo for the text-width  
+    //with minmax we make sure that it stays responsive (min-content = line-break on smaller screen-sizes)
+    grid-row-gap: 1.5rem; 
+    justify-content: center; //to center the whole content inside of the container
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: 1 / -1; 
+    }
+
+    @media only screen and (max-width: $bp-small) {
+       padding: 5rem;  
+    }
+
+    &__logo{
+        height: 3rem; 
+        justify-self: center;  
+    }
+
+    &__btn{
+        align-self: start; 
+        justify-self: start; 
+
+        @media only screen and (max-width: $bp-small) {
+            margin-top: 2rem;  
+         }
+    }
+
+    &__seenon-text{
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;  //max content for just 1 line
+        grid-column-gap: 1.5rem; 
+        align-items: center; 
+        
+        font-size: 1.6rem; 
+        color: $color-grey-light-2; 
+
+        &::before, 
+        &::after {
+            content: "";
+            height: 1px; 
+            display: block; 
+            background-color: currentColor;
+        }
+    }
+
+    &__seenon-logos{
+        display: grid; 
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem; 
+        justify-items: center;
+        align-items: center; 
+
+        img {
+            max-height: 2.5rem; 
+            max-width: 100%; 
+            filter: brightness(70%); 
+        }
+    }
+}

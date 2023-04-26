@@ -1,0 +1,35 @@
+.features {
+    grid-column: center-start / center-end; 
+
+    margin: 15rem 0; 
+
+    display: grid; //grid-item becomes grid-container
+    //grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    //with auto-fit + minmax new lines are created if there's not enough space
+    grid-gap: 6rem; 
+    align-items: start; //default is stretch, so if we have less lines in different items they have different gaps between the heading and text (with align-items start we avoid that)
+
+    @media only screen and (max-width: $bp-small) {
+        margin: 5rem 0;  
+     }
+}
+
+.feature {
+    display: grid; 
+    grid-template-columns: min-content 1fr; //min-content for the icon and 1fr for the rest
+    grid-row-gap: 1.5rem; 
+    grid-column-gap: 2.5rem; 
+
+    &__icon {
+        fill: $color-primary;
+        width: 4.5rem; 
+        height: 4.5rem; 
+        grid-row: 1 / span 2; //so the icon takes the space of 2 grid rows all the way to the buttom
+        transform: translateY(-1rem); //to align the icon with the heading-4
+    }
+
+    &__text {
+        font-size: 1.7rem; 
+    }
+}
